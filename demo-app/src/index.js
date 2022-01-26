@@ -1,9 +1,12 @@
 import { render } from 'react-dom';
 
-import { HelloWorld } from './components/HelloWorld';
+import { ColorTool } from './components/ColorTool';
+import { CarTool } from './components/CarTool';
 
 render(
-  // React.createElement(HelloWorld)
-  <HelloWorld />,
+  <>
+    <ColorTool />
+    <CarTool />
+  </>,
   document.querySelector('#root'),
 );
