@@ -1,12 +1,8 @@
-export const ColorTool = () => {
+export const ColorTool = (props) => {
 
-  const colors = [
-    { id: 1, name: 'red' },
-    { id: 2, name: 'green' },
-    { id: 3, name: 'blue' }
-  ];
 
-  const colorsList = colors.map(c => <li key={c.id}>{c.name}</li>);
+
+  const colorsList = props.colors.map(c => <li key={c.id}>{c.name}</li>);
 
   return (
     <>
