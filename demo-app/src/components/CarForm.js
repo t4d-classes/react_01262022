@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-export const CarForm = () => {
+export const CarForm = (props) => {
 
   const [ carForm, setCarForm ] = useState({
     make: '', model: '', year: 1900, color: '', price: 0,
@@ -16,7 +16,13 @@ export const CarForm = () => {
 
   };
 
-  console.log(carForm);
+  const submitCar = () => {
+    props.onSubmitCar({ ...carForm });
+
+    setCarForm({
+      make: '', model: '', year: 1900, color: '', price: 0,
+    })
+  };
 
   return (
     <form>
@@ -40,7 +46,7 @@ export const CarForm = () => {
         Price:
         <input type="number" name="price" value={carForm.price} onChange={change} />
       </label>
-      <button type="button">Submit Car</button>
+      <button type="button" onClick={submitCar}>Submit Car</button>
     </form>
   );
 
