@@ -23,7 +23,7 @@ export const CarTool = (props) => {
   return (
     <>
       <ToolHeader headerText="Car Tool" />
-      <CarTable cars={props.cars} />
+      <CarTable cars={cars} />
       <CarForm onSubmitCar={addCar} />
     </>
   );
