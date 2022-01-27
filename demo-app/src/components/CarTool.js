@@ -1,9 +1,14 @@
-export const CarTool = () => {
+import { ToolHeader } from "./ToolHeader";
+import { CarTable } from "./CarTable";
+
+export const CarTool = (props) => {
 
   return (
-    <header>
-      <h1>Car Tool</h1>
-    </header>
+    <>
+      {/* React.createElement(ToolHeader, { headerText: 'Car Tool' } />) */}
+      <ToolHeader headerText="Car Tool" />
+      <CarTable cars={props.cars} />
+    </>
   );
 
 };
