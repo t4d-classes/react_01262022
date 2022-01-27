@@ -11,8 +11,8 @@ export const CarForm = () => {
     setCarForm({
       ...carForm,
       [ e.target.name ]: e.target.type === 'number'
-        ? parseInt(e.target.value, 10) : e.target.value,
-    })
+        ? e.target.valueAsNumber : e.target.value,
+    });
 
   };
 
