@@ -20,16 +20,15 @@ export const useListAsync = (resourceName) => {
     await refreshItems();
   }, [append, refreshItems]);
 
-  const replaceItem = (item) => {
-    const newItems = [...items];
-    const itemIndex = items.findIndex(c => c.id === item.id);
-    newItems[itemIndex] = item;
-    setItems(newItems);
-  };
+  const replaceItem = useCallback(async (item) => {
+    await replace(item);
+    await refreshItems();
+  }, [replace, refreshItems]);
 
-  const removeItem = (itemId) => {
-    setItems(items.filter(c =>c.id !== itemId));
-  };
+  const removeItem = useCallback(async (itemId) => {
+    await remove(itemId);
+    await refreshItems();
+  }, [remove, refreshItems]);
 
   return [ items, refreshItems, appendItem, replaceItem, removeItem ];
 

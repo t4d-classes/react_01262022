@@ -25,19 +25,19 @@ export const useCarToolStoreAsync = () => {
     setEditCarId(-1);
   }, [appendCar]);
 
-  const deleteCar = (carId) => {
+  const deleteCar = useCallback(async (carId) => {
     removeCar(carId);
     setEditCarId(-1);
-  };
+  }, [removeCar]);
 
-  const saveCar = (car) => {
+  const saveCar = useCallback(async (car) => {
     replaceCar(car);
     setEditCarId(-1);
-  };
+  }, [replaceCar]);
 
-  const cancelCar = () => {
+  const cancelCar = useCallback(() => {
     setEditCarId(-1);
-  };
+  }, []);
 
   return {
     cars,
