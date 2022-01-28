@@ -1,4 +1,4 @@
-
+import PropTypes from 'prop-types';
 
 export const ColorList = (props) => {
 
@@ -12,3 +12,15 @@ export const ColorList = (props) => {
   );
 
 };
+
+ColorList.defaultProps = {
+  colors: [],
+};
+
+
+ColorList.propTypes = {
+  colors: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    name: PropTypes.string.isRequired,
+  })).isRequired,
+}
