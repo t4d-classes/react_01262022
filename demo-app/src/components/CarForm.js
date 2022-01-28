@@ -16,23 +16,28 @@ export const CarForm = (props) => {
     <form>
       <label>
         Make:
-        <input type="text" name="make" value={carForm.make} onChange={change} />
+        <input type="text" name="make"
+          value={carForm.make} onChange={change} />
       </label>
       <label>
         Model:
-        <input type="text" name="model" value={carForm.model} onChange={change} />
+        <input type="text" name="model"
+          value={carForm.model} onChange={change} />
       </label>
       <label>
         Year:
-        <input type="number" name="year" value={carForm.year} onChange={change} />
+        <input type="number" name="year"
+          value={carForm.year} onChange={change} />
       </label>
       <label>
         Color:
-        <input type="text" name="color" value={carForm.color} onChange={change} />
+        <input type="text" name="color"
+          value={carForm.color} onChange={change} />
       </label>
       <label>
         Price:
-        <input type="number" name="price" value={carForm.price} onChange={change} />
+        <input type="number" name="price"
+          value={carForm.price} onChange={change} />
       </label>
       <button type="button" onClick={submitCar}>Submit Car</button>
     </form>

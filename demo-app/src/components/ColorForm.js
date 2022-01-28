@@ -1,38 +1,27 @@
-import { useState } from 'react';
+import { useForm } from '../hooks/useForm';
 
 export const ColorForm = (props) => {
 
-  const [ colorForm, setColorForm ] = useState({
+  const [ colorForm, change, resetColorForm ] = useForm({
     name: '', hexcode: '',
   });
 
-  const change = e => {
-
-    setColorForm({
-      ...colorForm,
-      [ e.target.name ]: e.target.value,
-    })
-
-  };
-
   const submitColor = () => {
     props.onSubmitColor({ ...colorForm });
-
-    setColorForm({
-      name: '', hexcode: '',
-    })
+    resetColorForm();
   };
-
 
   return (
     <form>
       <label>
         Name:
-        <input type="text" name="name" value={colorForm.name} onChange={change} />
+        <input type="text" name="name"
+          value={colorForm.name} onChange={change} />
       </label>
       <label>
         Hexcode:
-        <input type="text" name="hexcode" value={colorForm.hexcode} onChange={change} />
+        <input type="text" name="hexcode"
+          value={colorForm.hexcode} onChange={change} />
       </label>
       <button type="button" onClick={submitColor}>Submit Color</button>
     </form>

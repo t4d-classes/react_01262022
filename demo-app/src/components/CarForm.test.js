@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, fireEvent } from '@testing-library/react';
+import { render, fireEvent, screen } from '@testing-library/react';
 
 import { CarForm } from '../components/CarForm';
 
@@ -7,7 +7,6 @@ describe('CarForm testing library', () => {
   let car;
   let textInputKeys = ['make', 'model', 'color'];
   let numberInputKeys = ['year', 'price'];
-  let renderResult;
   let submitCarSpy;
 
   beforeEach(() => {
@@ -22,16 +21,17 @@ describe('CarForm testing library', () => {
     submitCarSpy = jest.fn();
   });
 
-  beforeEach(() => {
-    renderResult = render(
+  const renderComponent = () => {
+    render(
       <CarForm buttonText="Add Car" onSubmitCar={submitCarSpy} />,
     );
-  });
+  };
 
   test('render CarViewRow component', () => {
-    const { getAllByRole } = renderResult;
 
-    const textboxInputs = getAllByRole('textbox');
+    renderComponent();
+
+    const textboxInputs = screen.getAllByRole('textbox');
     expect(textboxInputs.length).toBe(3);
     textboxInputs.forEach((input, index) => {
       const evt = {
@@ -44,7 +44,7 @@ describe('CarForm testing library', () => {
       fireEvent.change(input, evt);
     });
 
-    const spinbuttonInputs = getAllByRole('spinbutton');
+    const spinbuttonInputs = screen.getAllByRole('spinbutton');
     expect(spinbuttonInputs.length).toBe(2);
     spinbuttonInputs.forEach((input, index) => {
       const evt = {
@@ -57,7 +57,7 @@ describe('CarForm testing library', () => {
       fireEvent.change(input, evt);
     });
 
-    const submitButton = renderResult.getByRole('button');
+    const submitButton = screen.getByRole('button');
 
     fireEvent.click(submitButton);
     expect(submitCarSpy).toHaveBeenCalledWith(car);

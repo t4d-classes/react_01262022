@@ -31,7 +31,7 @@ describe("use form custom hook", () => {
         target: {
           name: "age",
           type: "number",
-          value: "20",
+          valueAsNumber: 20,
         },
       };
 

@@ -29,6 +29,4 @@ export const CarTable = (props) => {
     </table>
   )
 
-
-
 };
