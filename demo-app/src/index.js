@@ -1,25 +1,13 @@
 import { render } from 'react-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
 
-import { ColorTool } from './components/ColorTool';
-
-import { CarToolStoreProvider } from './contexts/carToolStoreContext';
-import { CarTool } from './components/CarTool';
-
-const colorList = [
-  { id: 1, name: 'red' },
-  { id: 2, name: 'green' },
-  { id: 3, name: 'blue' }
-];
+import { App } from './App';
 
 
 
 render(
-  <>
-    <ColorTool colors={colorList} />
-    <CarToolStoreProvider>
-      <CarTool />
-    </CarToolStoreProvider>
-    
-  </>,
+  <Router>
+    <App />
+  </Router>,
   document.querySelector('#root'),
 );
