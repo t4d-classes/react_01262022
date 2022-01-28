@@ -1,6 +1,8 @@
 import { render } from 'react-dom';
 
 import { ColorTool } from './components/ColorTool';
+
+import { CarToolStoreProvider } from './contexts/carToolStoreContext';
 import { CarTool } from './components/CarTool';
 
 const colorList = [
@@ -9,29 +11,15 @@ const colorList = [
   { id: 3, name: 'blue' }
 ];
 
-const carList = [
-  {
-    id: 1,
-    make: 'Ford',
-    model: 'Fusion Hybrid',
-    year: 2019,
-    color: 'blue',
-    price: 45000,
-  },
-  {
-    id: 2,
-    make: 'Tesla',
-    model: 'S',
-    year: 2020,
-    color: 'red',
-    price: 120000,
-  },  
-];
+
 
 render(
   <>
     <ColorTool colors={colorList} />
-    <CarTool cars={carList} />
+    <CarToolStoreProvider>
+      <CarTool />
+    </CarToolStoreProvider>
+    
   </>,
   document.querySelector('#root'),
 );

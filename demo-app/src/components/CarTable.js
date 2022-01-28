@@ -1,14 +1,18 @@
+import { useCarTable } from '../hooks/useCarTable';
+
 import { CarViewRow } from './CarViewRow';
 import { CarEditRow } from './CarEditRow';
 
-export const CarTable = ({ 
-  cars,
-  editCarId,
-  onEditCar: editCar,
-  onDeleteCar: deleteCar,
-  onSaveCar: saveCar,
-  onCancelCar: cancelCar
-}) => {
+export const CarTable = () => {
+
+  const { 
+    cars,
+    editCarId,
+    editCar,
+    deleteCar,
+    saveCar,
+    cancelCar
+  } = useCarTable();
 
   return (
     <table>

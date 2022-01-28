@@ -1,13 +1,16 @@
+import { useCarForm } from '../hooks/useCarForm';
 import { useForm } from '../hooks/useForm';
 
 export const CarForm = (props) => {
+
+  const { addCar } = useCarForm();
 
   const [ carForm, change, resetCarForm ] = useForm({
     make: '', model: '', year: 1900, color: '', price: 0,
   });
 
   const submitCar = () => {
-    props.onSubmitCar({ ...carForm });
+    addCar({ ...carForm });
 
     resetCarForm();
   };
