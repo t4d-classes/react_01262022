@@ -1,7 +1,7 @@
 import { useCarForm } from '../hooks/useCarForm';
 import { useForm } from '../hooks/useForm';
 
-export const CarForm = (props) => {
+export const CarForm = () => {
 
   const { addCar } = useCarForm();
 

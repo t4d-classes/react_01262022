@@ -3,11 +3,14 @@ import { render, fireEvent, screen } from '@testing-library/react';
 
 import { CarForm } from '../components/CarForm';
 
+import { addCarSpy } from '../hooks/useCarForm';
+
+jest.mock('../hooks/useCarForm');
+
 describe('CarForm testing library', () => {
   let car;
   let textInputKeys = ['make', 'model', 'color'];
   let numberInputKeys = ['year', 'price'];
-  let submitCarSpy;
 
   beforeEach(() => {
     car = {
@@ -17,13 +20,11 @@ describe('CarForm testing library', () => {
       color: 'red',
       price: 45000,
     };
-
-    submitCarSpy = jest.fn();
   });
 
   const renderComponent = () => {
     render(
-      <CarForm buttonText="Add Car" onSubmitCar={submitCarSpy} />,
+      <CarForm buttonText="Add Car" />,
     );
   };
 
@@ -60,6 +61,6 @@ describe('CarForm testing library', () => {
     const submitButton = screen.getByRole('button');
 
     fireEvent.click(submitButton);
-    expect(submitCarSpy).toHaveBeenCalledWith(car);
+    expect(addCarSpy).toHaveBeenCalledWith(car);
   });
 });
